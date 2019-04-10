@@ -94,14 +94,13 @@ def get_user_data():
     b = np.max(df_min.lng)
     c = np.min(df_min.lat)
     d = np.min(df_min.lng)
-    for i in df_min.lat:
-        print i
-    res = gen_sentinel_point((a, b),(c, d),9)
+
+    res = gen_sentinel_point((a, b),(c, d),25)
     plt.figure(figsize=(10,10.1),dpi=125)
     for item in res:
         plt.plot(item[0], item[1],'ro')
     plt.show()
-    coords = df_min.as_matrix(columns=['lat', 'lng'])
+    coords = df_min.values(columns=['lat', 'lng'])
     corrds_infer = []
     distance_array = []
     for (x, y) in coords:
